@@ -1,0 +1,17 @@
+{
+  "name": "warshall-algorithm-study",
+  "version": "0.0.2",
+  "description": "",
+  "main": "./src/warshall.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/cli.js"
+  },
+  "bin": {
+    "warshall": "./src/cli.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {}
+}
