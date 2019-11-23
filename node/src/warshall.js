@@ -4,7 +4,7 @@ const warshall = async (matrix) => { // warshall算法的函数
     const N = matrix.length;
     for (let i = 0; i < N; i++) { // 检查矩阵的行数和列数是否匹配
         if (matrix[i].length !== N) {
-            throw '异常: 行和列不匹配!';
+            throw '异常: 行数和列数不匹配!';
         }
         TRMatrix[i] = [];
         for (let j = 0; j < N; j++) {
