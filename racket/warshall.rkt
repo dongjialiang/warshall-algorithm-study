@@ -3,8 +3,6 @@
 (require racket/string)
 (require data/gvector)
 
-(define matrix (gvector)) ;;; 创建空的可变向量作为矩阵
-
 (define (matrix-add matrix str-line)
     ;;; 添加一组向量作为矩阵一行数据的函数
     (cond [(not (string=? str-line "")) ;;; 字符串不为空才对字符串进行操作
@@ -35,7 +33,15 @@
     (define N (gvector-count matrix))
     (for/gvector ([row matrix])
         (cond [(not (= N (gvector-count row)))
-            (error "异常: 行数和列数不匹配!")
+            (with-handlers ([string? (lambda (e) (
+                        (displayln e)
+                        (display "\n")
+                        (cli)
+                        (exit)
+                    ))
+                ])
+                (raise "行数和列数不匹配")
+            )
         ])
     )
     (do ((k 0 (+ k 1))) ((= k N))
@@ -60,15 +66,21 @@
     (write '>)
     (set! str-line (read-line (current-input-port) 'any))
 
-    (if (string-contains? str-line "ok")
-        (begin
+    (cond
+        [(string-contains? str-line "ok")
             (matrix-add matrix (string-replace str-line "ok" ""))
             (warshall matrix)
-        )
-        (begin
+            (matrix-display matrix)
+            (display "\n")
+            (cli)
+        ]
+        [(string=? str-line ".exit")
+            (display " 再见朋友, 欢迎下次使用~")
+        ]
+        [else
             (matrix-add matrix str-line)
             (read-line-loop str-line matrix)
-        )
+        ]
     )
 )
 
@@ -77,9 +89,8 @@
     (define str-line "") ;;; 保存每行读取的字符串
     (display "请输入矩阵:\n")
     
+    (define matrix (gvector)) ;;; 创建空的可变向量作为矩阵
     (read-line-loop str-line matrix)
-
-    (matrix-display matrix)
 )
 
 (cli)

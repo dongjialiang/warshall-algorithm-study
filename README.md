@@ -2,6 +2,6 @@
 
 Practice the warshall algorithm
 
-node: [node](./node/README.md)
+[node](./node/README.md)
 
-racket: [racket](./racket/README.md)
+[racket](./racket/README.md)

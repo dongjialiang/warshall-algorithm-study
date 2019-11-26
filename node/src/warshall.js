@@ -24,7 +24,7 @@ const warshall = async (matrix) => { // warshall算法的函数
                  *                  : TRMatrix[i][j];
                  */
                 for (let j = 0; j < N; j++) { // 关系矩阵M的列
-                    TRMatrix[i][j] = await (TRMatrix[i][j] | TRMatrix[k][j]);
+                    TRMatrix[i][j] |= await TRMatrix[k][j];
                 }
             }
         }
