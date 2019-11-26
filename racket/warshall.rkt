@@ -37,7 +37,6 @@
                         (displayln e)
                         (display "\n")
                         (cli)
-                        (exit)
                     ))
                 ])
                 (raise "行数和列数不匹配")
@@ -76,6 +75,7 @@
         ]
         [(string=? str-line ".exit")
             (display " 再见朋友, 欢迎下次使用~")
+            (exit)
         ]
         [else
             (matrix-add matrix str-line)
