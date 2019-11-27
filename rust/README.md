@@ -27,7 +27,7 @@ matrix:
 PS E:\ng\Test\test\warshall-backup\rust>
 ```
 ## Build
-`rustc .\warshall.rs`
+`cargo build`
 
 ## Run
-`./warshall.exe`
+`cargo run`
